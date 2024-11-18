@@ -1,0 +1,306 @@
+/* Importing Google font - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: #F9FAFB; /* Light Pearl White */
+    overflow: hidden; /* Prevent scrollbars on the entire application window */
+}
+
+.sidebar {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    background: #1E293B; /* Deep Navy Blue */
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    width: 85px;
+    padding: 25px 20px;
+    transition: all 0.4s ease;
+    box-shadow: 10px 10px 50px rgba(0, 0, 0, 0.2); /* Softer shadow for a modern look */
+}
+
+.sidebar:hover {
+    width: 260px;
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+}
+
+.sidebar-header img {
+    width: 65px;
+    border-radius: 100%;
+    margin-left: -15px;
+}
+
+.sidebar-header h2 {
+    font-size: 1.25rem;
+    font-weight: 600px;
+    display: flex;
+    flex-direction: column;
+    color: #F9FAFB; /* Matches background for soft consistency */
+    margin-right: 10px;
+    text-wrap: nowrap;
+    opacity: 0;
+    transition: all 0.55s ease;
+}
+
+.sidebar:hover .sidebar-header h2 {
+    opacity: 1;
+}
+
+.sidebar-links {
+    list-style-type: none;
+    margin-top: 20px;
+    height: 80%;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.sidebar-links h4 span {
+    opacity: 0;
+    transition: all 0.55s ease;
+    color: #9CA3AF; /* Neutral Gray */
+}
+
+.sidebar:hover .sidebar-links h4 span {
+    opacity: 1;
+}
+
+.sidebar-links h4 {
+    color: #9CA3AF; /* Neutral Gray */
+    font-weight: 500px;
+    margin: 10px 0px;
+    white-space: nowrap;
+}
+
+.sidebar-links li a {
+    display: flex;
+    align-items: center;
+    gap: 0 18px;
+    color: rgba(255, 255, 255, 0.9); /* Almost White */
+    font-weight: 500px;
+    padding: 10px 10px;
+    white-space: nowrap;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.sidebar-links li a:hover {
+    background: #4FD1C5; /* Light Teal */
+    color: #1E293B; /* Deep Navy for contrast */
+    border-radius: 15px;
+}
+
+.sidebar-links a.active {
+    background-color: #FF6B6B; /* Soft Coral */
+    color: white;
+    border-radius: 10px;
+}
+
+.user-account {
+    display: flex;
+    padding: 12px;
+    margin-left: -10px;
+    margin-top: auto;
+}
+
+.user-account .user-profile {
+    color: #E5E7EB; /* Light Neutral Gray */
+    display: flex;
+    align-items: center;
+}
+
+.user-profile img {
+    width: 42px;
+    border-radius: 50%;
+}
+
+.user-detail {
+    margin-left: 23px;
+    white-space: nowrap;
+}
+
+.user-profile h3 {
+    font-size: 1rem;
+    font-weight: 600px;
+    opacity: 0;
+    transition: all 0.55s ease;
+}
+
+.user-profile span {
+    font-size: 0.775rem;
+    font-weight: 600px;
+    opacity: 0;
+    transition: all 0.55s ease;
+    color: #94A3B8; /* Muted Blue-Gray */
+}
+
+.sidebar:hover .user-profile h3, 
+.user-profile span {
+    opacity: 1;
+}
+
+.content-page {
+    width: calc(100% - 85px); /* Default width when sidebar is collapsed */
+    margin-left: 85px;
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Ensure the content page fills the viewport height */
+}
+
+.sidebar:hover ~ .content-page {
+    width: calc(100% - 260px); /* Adjust width when sidebar expands */
+    margin-left: 260px;
+}
+
+.content-page h1 {
+    margin: 10px;
+    opacity: 0.8;
+    display: inline-block;
+    color: #4B5563; /* Charcoal */
+}
+
+.content-page .secondarysidebar {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 150px;
+    height: 100%;
+    opacity: 0.5;
+}
+
+.content-page .secondarysidebar .add-icon {
+    position: absolute;
+    width: 100px;
+    border-radius: 50%;
+    bottom: 12px;
+    left: 15%;
+    transition: all 0.15s ease;
+}
+
+.content-page .secondarysidebar .add-icon:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.content-page .folders-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    overflow-y: auto;
+    overflow-x: hidden;
+    flex-grow: 1;
+    padding: 10px;
+    gap: 15px;
+}
+
+/* Hide the scrollbar */
+.content-page .folders-container::-webkit-scrollbar {
+    display: none;
+}
+
+.content-page .folder {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    padding: 15px;
+    width: 125px;
+    text-align: center;
+    border-width: 0.5px;
+    border-style: solid;
+    border-color: #94A3B8; /* Muted Blue-Gray */
+    border-radius: 5px;
+    transition: all 0.15s ease;
+    background: #F9FAFB; /* Light Pearl White */
+    color: #4B5563; /* Charcoal */
+}
+
+.content-page .folder .folder-name {
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.content-page .folder:hover {
+    transform: scale(1.1);
+    background: #7fd8d8; /* Soft Coral */
+    color: #F9FAFB; /* Light Pearl White for contrast */
+}
+
+
+
+
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 300px;
+}
+
+.modal-input {
+    width: 100%;
+    padding: 10px;
+    margin: 15px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal-confirm,
+.modal-cancel {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.modal-confirm {
+    background: #4CAF50;
+    color: white;
+}
+
+.modal-cancel {
+    background: #f44336;
+    color: white;
+}
